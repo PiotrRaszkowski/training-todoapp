@@ -14,7 +14,9 @@
         <h:form>
             <p:dataTable value="#{toDosPresenter.toDos}" var="todo">
                 <p:column headerText="Title">
-                    <h:outputText value="#{todo.title}" />
+                    <h:link value="#{todo.title}" outcome="editTodo">
+                        <f:param name="id" value="#{todo.id}" />
+                    </h:link>
                 </p:column>
 
                 <p:column headerText="Description">

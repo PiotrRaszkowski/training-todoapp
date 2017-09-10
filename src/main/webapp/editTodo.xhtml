@@ -7,23 +7,28 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <f:view>
+    <f:metadata>
+        <f:viewParam name="id" value="#{editToDoPresenter.todoId}" />
+        <f:event type="preRenderView" listener="#{editToDoPresenter.init}" />
+    </f:metadata>
+
     <h:head>
 
     </h:head>
     <h:body>
         <h:form>
-            <h:outputText value="Hello, #{loggedAccount.userName}!" />
             <p:panelGrid columns="3">
                 <p:outputLabel value="Title:" />
-                <p:inputText id="title" value="#{addToDoPresenter.toDo.title}" />
+                <p:inputText id="title" value="#{editToDoPresenter.toDo.title}" />
                 <p:message for="title" />
 
                 <p:outputLabel value="Description:" />
-                <p:inputTextarea id="description" value="#{addToDoPresenter.toDo.description}" />
+                <p:inputTextarea id="description" value="#{editToDoPresenter.toDo.description}" />
                 <p:message for="description" />
             </p:panelGrid>
 
-            <p:commandButton value="Save" update="@form" action="#{addToDoPresenter.save}" />
+            <p:commandButton value="Save" update="@form" actionListener="#{editToDoPresenter.save}" />
+            <p:commandButton value="Back" action="todos?faces-redirect=true" />
         </h:form>
     </h:body>
 </f:view>

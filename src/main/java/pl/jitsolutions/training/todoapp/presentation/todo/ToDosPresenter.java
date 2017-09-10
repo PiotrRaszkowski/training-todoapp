@@ -8,7 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import lombok.Getter;
-import pl.jitsolutions.training.todoapp.business.todo.boundary.ToDosProvider;
+import pl.jitsolutions.training.todoapp.business.todo.boundary.ToDoProvider;
 import pl.jitsolutions.training.todoapp.business.todo.entity.ToDo;
 
 @Named
@@ -16,13 +16,13 @@ import pl.jitsolutions.training.todoapp.business.todo.entity.ToDo;
 public class ToDosPresenter implements Serializable {
 
 	@EJB
-	private ToDosProvider toDosProvider;
+	private ToDoProvider toDoProvider;
 
 	@Getter
 	private List<ToDo> toDos;
 
 	@PostConstruct
 	public void init() {
-		toDos = toDosProvider.getTodos();
+		toDos = toDoProvider.getTodos();
 	}
 }

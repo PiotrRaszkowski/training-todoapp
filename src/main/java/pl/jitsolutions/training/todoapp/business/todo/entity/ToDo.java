@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Tolerate;
+import pl.jitsolutions.training.todoapp.business.account.entity.Account;
 import pl.jitsolutions.training.todoapp.business.common.boundary.BaseEntity;
 
 @Getter
@@ -35,6 +36,8 @@ public class ToDo extends BaseEntity {
 	private String title;
 
 	private String description;
+	
+	private Account account;
 
 	@Tolerate
 	public ToDo() {

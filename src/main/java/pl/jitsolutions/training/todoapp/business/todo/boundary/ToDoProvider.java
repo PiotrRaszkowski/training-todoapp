@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import pl.jitsolutions.training.todoapp.business.todo.entity.ToDo;
 
 @Stateless
-public class ToDosProvider {
+public class ToDoProvider {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -20,6 +20,11 @@ public class ToDosProvider {
 	public List<ToDo> getTodos() {
 		TypedQuery<ToDo> query = entityManager.createNamedQuery(ToDo.GET_TODOS_QUERY, ToDo.class);
 		return query.getResultList();
+	}
+
+	@TransactionAttribute(TransactionAttributeType.NEVER)
+	public ToDo getTodo(Long id) {
+		return entityManager.find(ToDo.class, id);
 	}
 
 }
